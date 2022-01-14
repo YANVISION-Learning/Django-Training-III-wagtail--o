@@ -1,0 +1,31 @@
+{% load wagtailimages_tags %}
+
+
+<section class="section-padding">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-6 col-sm-12 col-md-8 mb-4">
+                <h3 class="mb-3">{{ value.title1 }}</h3>
+                <p class="mb-4">{{ value.description }}</p>
+
+                <span class="h5 mb-4">{{ value.title2 }}</span>
+                <ul class="about-list2 my-4">
+                    {% for feature in value.features %}
+                        <li class="mb-2">
+                            <i class="far fa-check-circle"> </i> {{ feature.text }}
+                        </li>
+                    {% endfor %}
+                </ul>
+
+                <a href="{{ value.our_link.href }}"
+                   {% if value.our_link.external_link %}target="_blank" {% endif %}
+                   class="mt-3 d-inline-block">{{ value.our_link.text }} <i class="fa fa-angle-right"></i></a>
+            </div>
+
+            <div class="col-lg-6 col-md-4">
+                {% image value.image fill-450x475 as img %}
+                <img src="{{ img.url }}" alt="" class="img-fluid w-100">
+            </div>
+        </div>
+    </div>
+</section>
